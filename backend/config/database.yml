@@ -8,4 +8,4 @@ default: &default
 
 development:
   <<: *default
-  database: next_app_api_development
+  database: myapp_development
