@@ -1,9 +1,21 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+
+10.times do |genre_name|
+  Monster.find_or_create_by!(
+    name: Faker::Games::Pokemon.name,
+    tribe: 1,
+    level: rand(1..6),
+    category: rand(0..3)
+  )
+end
+
+def insert_kind
+  # 属性
+  %i(火炎 格闘 大気 自然 氷水 機械 汚物).each do |kind|
+    Kind.find_or_create_by!(
+      name: kind
+    )
+  end
+  puts "属性を登録しました"
+end
+
+insert_kind

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :health_check, only: [:index]
 
   resources :monsters, only: [:index, :create, :update]
+  resources :moves, only: [:index, :create, :update]
+  resources :kinds, only: [:index]
 
   # Defines the root path route ("/")
   # root "posts#index"

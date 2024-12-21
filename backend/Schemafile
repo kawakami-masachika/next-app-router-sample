@@ -10,9 +10,29 @@ end
 
 create_table "monsters", force: :cascade do |t|
   t.string   "name"
-  t.string  "type"
-  t.string  "level"
-  t.string  "attribute"
+  t.integer  "tribe"
+  t.integer  "level"
+  t.integer  "category"
   t.datetime "created_at"
   t.datetime "updated_at"
 end
+
+# 種族
+create_table "kinds", force: :cascade do |t|
+  t.string   "name"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+# 技
+create_table "moves", force: :cascade do |t|
+  t.string   "name"
+  t.integer  "kind_id"
+  t.integer  "power"
+  t.integer  "mp"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "moves", ["kind_id"], name: "index_moves_on_kind_id", using: :btree
+add_foreign_key "moves", "kinds", name: "fk_moves_kind_id"
